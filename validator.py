@@ -3,13 +3,13 @@ from copy import copy
 from functools import update_wrapper, wraps
 from typing import Callable, get_args, get_origin, Union
 
+
 IMPORTS = [] # Because problems arise when trying to import things, it may
     # happen that imports need to be manually specified here as part of a
     # list.
 COMPLEX_IMPORTS = [] # This exists similarly, just used for from x import y
     # syntax (should use a list of tuples or other iterable). Admittedly,
     # this is a very hacky solution.
-
 
 def instance_or_union(obj: object, compared: type):
     """
@@ -100,6 +100,7 @@ def validatedclass(cls):
     new_init = update_wrapper(temp['func'], old_init)
     setattr(cls, '__init__', new_init)
     return cls
+
 
 def validatedfunction(func: Callable):
     """
